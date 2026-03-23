@@ -24,5 +24,14 @@ jobs:
           python main.py
       - name: Run tests
         run: pytest -q
+
+      - name: Rust test workspace
+        run: |
+          cargo test --workspace --no-default-features
+          cargo test --workspace --no-default-features -- --nocapture
+
+      - name: Run benchmarks
+        run: cargo bench --no-default-features -- --quiet || true
+
       - name: Check formatting
         run: pre-commit run --all-files

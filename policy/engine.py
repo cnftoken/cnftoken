@@ -3,7 +3,13 @@ import sys
 from guard.failure import CriticalFailure
 
 
-def load_rules(path='policy/rules.yaml'):
+import os
+
+
+def load_rules(path=None):
+    if path is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(base_dir, 'rules.yaml')
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)

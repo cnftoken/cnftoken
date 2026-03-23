@@ -1,0 +1,20 @@
+[package]
+name = "cnf-token-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { workspace = true }
+thiserror = { workspace = true }
+cnf-token-trie = { path = "../cnf-token-trie" }
+cnf-token-batch = { path = "../cnf-token-batch" }
+regex = "1"
+
+[features]
+default = ["lang-detect"]
+lang-detect = []
+onnx-scorer = []
+
+[dev-dependencies]
+criterion = "0.2.11"
+

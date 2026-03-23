@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/cnf-token-core",
+    "crates/cnf-token-trie",
+    "crates/cnf-token-semantic",
+    "crates/cnf-token-batch",
+    "crates/cnf-token-domain",
+    "crates/cnf-token-safety",
+    "crates/cnf-token-ffi",
+]
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+ahash = "0.8"
+tracing = "0.1"
+thiserror = "1"
+tokio = { version = "1", features = ["full"] }
+rayon = "1.2.0"
+rayon-core = "1.8.0"
+

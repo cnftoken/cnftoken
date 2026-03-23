@@ -7,7 +7,10 @@ CORE_DIR = 'core'
 def run_git(*args):
     result = subprocess.run(['git', *args], capture_output=True, text=True)
     if result.returncode != 0:
-        fail_hard(f'git command failed: {result.stderr.strip()}')
+        stderr = result.stderr.strip()
+        if 'Not a git repository' in stderr:
+            return ''
+        fail_hard(f'git command failed: {stderr}')
     return result.stdout.strip()
 
 
