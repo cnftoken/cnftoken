@@ -1,0 +1,36 @@
+core_immutable: true
+core_paths:
+  - core
+policy_engine:
+  strict: true
+  fail_on_violation: true
+
+guard_system:
+  required:
+    - core_integrity_hash_checker
+    - change_validator
+    - dual_execution_validator
+    - token_drift_detector
+
+auto_stage:
+  allowed_directories:
+    - experimental
+    - guard
+    - policy
+    - tests
+    - .github/workflows
+
+commit_control:
+  enforce_atomic: true
+  allowed_types:
+    - feat
+    - fix
+    - test
+    - chore
+
+ci:
+  run_tests: true
+  run_validations: true
+  block_core_modification: true
+
+readme_law: true
