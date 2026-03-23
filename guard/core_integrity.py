@@ -24,7 +24,11 @@ def compute_core_hash():
 
 def write_core_hash():
     value = compute_core_hash() or ''
-    with open(HASH_PATH, 'w', encoding='utf-8') as f:
+    from pathlib import Path
+
+    hash_file = Path(HASH_PATH)
+    hash_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(hash_file, 'w', encoding='utf-8') as f:
         f.write(value)
     return value
 
