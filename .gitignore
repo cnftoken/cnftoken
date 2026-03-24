@@ -18,3 +18,12 @@ Cargo.lock
 
 # Git
 *.orig
+
+# Guard System
+guard/.logs/
+guard/.metrics/
+guard/.state/
+guard/core_hash.sha256
+
+# Policy System
+policy/__pycache__/
