@@ -1,29 +1,284 @@
-# Python
+# =========================================================
+# 🧠 CORE LANGUAGE (PYTHON + GENERAL)
+# =========================================================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 *.pyo
 *.pyd
-venv/
-.env
+*.so
 
-# Rust
+# Compiled / serialized
+*.pyc
+*.pkl
+*.pickle
+*.joblib
+
+# =========================================================
+# 🔐 ENV & SECRETS (STRICT MODE)
+# =========================================================
+.env
+.env.*
+*.env
+
+# Secret files
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+secrets/
+credentials/
+private/
+vault/
+
+# API dumps / accidental leaks
+*.token
+*.secret
+*.apikey
+
+# =========================================================
+# ⚙️ VIRTUAL ENV
+# =========================================================
+venv/
+.venv/
+env/
+ENV/
+
+# =========================================================
+# 📦 BUILD / PACKAGE / RELEASE
+# =========================================================
+build/
+dist/
+*.egg-info/
+.eggs/
+*.whl
+
+# Temporary packaging
+pip-wheel-metadata/
+
+# =========================================================
+# 🧱 RUST (IF APPLICABLE)
+# =========================================================
 target/
 **/target/
-Cargo.lock
 
-# Editor
-.vscode/
-.idea/
-*.swp
+# ⚠️ IMPORTANT:
+# Keep Cargo.lock if reproducibility matters
+# Cargo.lock
 
-# Git
-*.orig
+# =========================================================
+# 📊 LOGGING (GLOBAL + CNF SPECIFIC)
+# =========================================================
+*.log
+*.log.*
+logs/
+log/
 
-# Guard System
+# CNF / system logs
+*.trace
+*.metrics
+*.debug
+*.event
+
+# Structured logs
+*.ndjson
+
+# =========================================================
+# 📂 DATA / DATASETS / EXPERIMENTS
+# =========================================================
+data/
+datasets/
+raw_data/
+processed_data/
+
+outputs/
+results/
+artifacts/
+experiments/
+runs/
+
+# Intermediate experiment states
+tmp/
+temp/
+scratch/
+
+# Large structured data
+*.csv
+*.tsv
+*.jsonl
+*.parquet
+*.feather
+
+# Binary / dumps
+*.bin
+*.dat
+*.dump
+
+# =========================================================
+# 🧠 MODEL / EMBEDDINGS / CACHE
+# =========================================================
+models/
+embeddings/
+
+# General cache
+cache/
+.cache/
+
+# Transformer / HF cache
+huggingface/
+transformers_cache/
+
+# Tokenizer / CNF cache
+token_cache/
+embedding_cache/
+
+# =========================================================
+# 🔬 CNF CORE ARTIFACTS (VERY IMPORTANT)
+# =========================================================
+cnf_tokens/
+cnf_cache/
+cnf_snapshots/
+cnf_intermediate/
+cnf_debug/
+
+# Compression pipeline stages
+stage_outputs/
+intermediate_states/
+pipeline_cache/
+
+# Reconstruction / rollback
+reconstructed/
+recovery/
+rollback_states/
+
+# =========================================================
+# 🧠 GUARD SYSTEM (CONTROL LAYER)
+# =========================================================
 guard/.logs/
 guard/.metrics/
 guard/.state/
-guard/core_hash.sha256
+guard/cache/
+guard/tmp/
+guard/checkpoints/
+guard/runtime/
+guard/snapshots/
 
-# Policy System
+# Predictive system
+guard/risk_logs/
+guard/risk_cache/
+guard/alerts/
+guard/monitoring/
+
+# Emergency / fallback
+guard/fallback/
+guard/recovery/
+
+# =========================================================
+# 📜 POLICY SYSTEM
+# =========================================================
 policy/__pycache__/
+policy/cache/
+policy/tmp/
+policy/runtime/
+
+# Evaluation / debug
+policy/eval_logs/
+policy/debug/
+policy/snapshots/
+
+# =========================================================
+# 🧪 TESTING / COVERAGE
+# =========================================================
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Test outputs
+test_results/
+test_artifacts/
+
+# =========================================================
+# 📓 NOTEBOOKS / RESEARCH
+# =========================================================
+.ipynb_checkpoints/
+*.ipynb
+
+# =========================================================
+# 🧑‍💻 EDITOR / IDE
+# =========================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# =========================================================
+# 🐳 DOCKER / CONTAINERS
+# =========================================================
+.dockerignore
+docker-compose.override.yml
+
+# Container runtime files
+*.pid
+*.sock
+
+# =========================================================
+# 🔁 CI/CD & ENV VARIANTS
+# =========================================================
+.env.ci
+.env.local
+.env.dev
+.env.prod
+
+# =========================================================
+# ⚡ PERFORMANCE / PROFILING
+# =========================================================
+profiling/
+*.prof
+*.profile
+*.stats
+
+# Flamegraphs / traces
+*.svg
+*.speedscope.json
+
+# =========================================================
+# 🧠 SAFETY NET (ANTI-REPO BLOAT)
+# =========================================================
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Media (prevent accidental commit)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+
+# =========================================================
+# 🧬 REPRODUCIBILITY CONTROL (IMPORTANT)
+# =========================================================
+# DO NOT IGNORE if used for determinism:
+# guard/core_hash.sha256
+# cnf_schema.json
+# token_mapping.json
+
+# =========================================================
+# 🚨 OPTIONAL STRICT MODE (UNCOMMENT IF NEEDED)
+# =========================================================
+# Ignore everything generated except explicitly tracked
+# *
+# !src/
+# !*.py
+# !*.md
