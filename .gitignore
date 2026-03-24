@@ -20,10 +20,10 @@ Cargo.lock
 *.orig
 
 # Guard System
-guard/.logs/
+# guard/.logs/  # Removed to allow audit logging
 guard/.metrics/
 guard/.state/
-guard/core_hash.sha256
+# guard/core_hash.sha256  # Removed to allow core integrity tracking
 
 # Policy System
 policy/__pycache__/
