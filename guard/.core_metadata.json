@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-03-24T03:34:26.568977",
+  "hash": "24e122fa92feed2dd50448bb4370f17c859448ab888fd3f8c6da05868572f396",
+  "file_count": 4,
+  "file_hashes": {
+    "README_CORE.md": "7d776e090912e0da346265079738f8e3a3580084f5d1bcc1130a8159da802a3e",
+    "__init__.py": "e893c0e40ac20d2104c0c59d242ba74b2fff7eac3a9e5bde47ea788f99afdec6",
+    "sample_core_file.txt": "842bfdf8fc9c61749d7a86fcb47f074c3f68f6fa1c93249fd59e4415c740dc93",
+    "__pycache__/__init__.cpython-312.pyc": "ad8c4f7b1c4844326df837776533759b1f98dc2f613b0a14f4ebd645043b80b9"
+  }
+}

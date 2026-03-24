@@ -280,6 +280,16 @@ def print_guard_status(verbose: bool = False) -> None:
     status.print_status(verbose=verbose)
 
 
+def get_status() -> GuardStatus:
+    """
+    Get guard status instance.
+    
+    Returns:
+        GuardStatus: Guard system status instance
+    """
+    return GuardStatus()
+
+
 if __name__ == "__main__":
     status = GuardStatus()
     status.print_status(verbose=True)

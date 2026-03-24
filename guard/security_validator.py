@@ -359,15 +359,15 @@ class SecurityValidator:
         """Generate security report."""
         if not self.violations:
             return "✓ No security violations detected"
-        
+
         lines = ["=== SECURITY VALIDATION REPORT ===", ""]
-        
+
         by_severity = {}
         for violation in self.violations:
             if violation.severity not in by_severity:
                 by_severity[violation.severity] = []
             by_severity[violation.severity].append(violation)
-        
+
         for severity in ['critical', 'error', 'warning', 'info']:
             if severity in by_severity:
                 icon = "✗" if severity in ['critical', 'error'] else "⚠"
@@ -375,26 +375,17 @@ class SecurityValidator:
                 lines.append(f"{icon} {severity.upper()} ({len(violations)}):")
                 for v in violations[:10]:
                     lines.append(f"  - {Path(v.filepath).name}: {v.violation}")
-        
+
         return "\n".join(lines)
-        try:
-            size = os.path.getsize(filepath)
-            
-            if size > self.MAX_FILE_SIZE:
-                violation = f"File too large: {size} bytes (max: {self.MAX_FILE_SIZE})"
-                self.violations.append((filepath, violation, "warning"))
-                return False
-            
-            return True
-        
-        except Exception as e:
-            self.violations.append((filepath, f"Size check failed: {str(e)}", "error"))
-            return False
-    
+
+    def get_violations(self) -> List[SecurityViolation]:
+        """Return collected violations from the last scan."""
+        return self.violations
+
     def check_file_extension(self, filepath: str) -> bool:
         """
         Check file extension is safe.
-        
+
         Args:
             filepath: Path to file
             

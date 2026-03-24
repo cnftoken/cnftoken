@@ -40,6 +40,7 @@ from .performance_guard import (
 from .guard_status import (
     GuardStatus,
     print_guard_status,
+    get_status,
 )
 
 __all__ = [
@@ -80,4 +81,5 @@ __all__ = [
     # Status
     "GuardStatus",
     "print_guard_status",
+    "get_status",
 ]
