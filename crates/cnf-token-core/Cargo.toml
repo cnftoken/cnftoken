@@ -9,6 +9,8 @@ thiserror = { workspace = true }
 cnf-token-trie = { path = "../cnf-token-trie" }
 cnf-token-batch = { path = "../cnf-token-batch" }
 regex = "1"
+unicode-normalization = { workspace = true }
+semver = { workspace = true }
 
 [features]
 default = ["lang-detect"]

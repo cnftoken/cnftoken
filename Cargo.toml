@@ -19,4 +19,6 @@ thiserror = "1"
 tokio = { version = "1", features = ["full"] }
 rayon = "1.2.0"
 rayon-core = "1.8.0"
+unicode-normalization = "0.1"
+semver = "1.0"
 

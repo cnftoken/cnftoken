@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 use crate::token_id::{encode_id, TokenId};
+use crate::error::CnfError;
 
 pub struct TokenEncoder {
     dictionary: HashMap<String, TokenId>,
@@ -28,10 +29,9 @@ impl TokenEncoder {
         id
     }
 
-    pub fn encode(&mut self, input: &str) -> Vec<u8> {
-        let tokens: Vec<&str> = input.split('_').collect();
+    pub fn encode(&mut self, input: &[String]) -> Vec<u8> {
         let mut out = Vec::new();
-        for tok in tokens {
+        for tok in input {
             let id = self.token_to_id(tok);
             out.extend(encode_id(id));
         }
@@ -43,18 +43,18 @@ impl TokenEncoder {
     }
 }
 
-pub fn encode_tokens(input: &str) -> Vec<u8> {
+pub fn encode_tokens(input: &[String]) -> Result<Vec<u8>, CnfError> {
     let mut encoder = TokenEncoder::new();
     let encoded = encoder.encode(input);
     // apply batch cache processor from L4 crate
-    cnf_token_batch::BatchCache::process_bytes(&encoded)
+    Ok(cnf_token_batch::BatchCache::process_bytes(&encoded))
 }
 
-pub fn encode_tokens_with_map(input: &str) -> (Vec<u8>, HashMap<TokenId, String>) {
+pub fn encode_tokens_with_map(input: &[String]) -> Result<(Vec<u8>, HashMap<TokenId, String>), CnfError> {
     let mut encoder = TokenEncoder::new();
     let encoded = encoder.encode(input);
     let map = encoder.get_reverse_map();
     let result = cnf_token_batch::BatchCache::process_bytes(&encoded);
-    (result, map)
+    Ok((result, map))
 }
 

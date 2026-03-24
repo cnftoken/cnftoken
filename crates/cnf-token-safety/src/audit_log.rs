@@ -1,7 +1,15 @@
-use std::fs::OpenOptions;
-use std::io::Write;
+use tracing::{info, error};
+use std::env;
 
-pub fn log_event(event: &str) -> std::io::Result<()> {
-    let mut file = OpenOptions::new().create(true).append(true).open("audit.log")?;
-    writeln!(file, "{}", event)
+pub fn init_audit_log() {
+    let log_path = env::var("CNF_AUDIT_LOG_PATH").unwrap_or_else(|_| "audit.log".to_string());
+    // Assume tracing is set up elsewhere
+}
+
+pub fn log_event(event: &str) {
+    info!("Audit: {}", event);
+}
+
+pub fn log_error(err: &str) {
+    error!("Audit Error: {}", err);
 }

@@ -19,7 +19,3 @@ pub fn detokenize_bytes(bytes: &[u8], reverse_map: &HashMap<u32, String>) -> Str
     }
     output.join(" ")
 }
-
-pub fn detokenize(data: &[u8]) -> String {
-    String::from_utf8_lossy(data).into_owned().replace("_", " ")
-}
